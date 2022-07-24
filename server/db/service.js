@@ -1,3 +1,5 @@
+const config = require('../config'); 
+
 const mysql = require('mysql');
 const db = mysql.createPool({
     host: config.DATABASE_URL,
@@ -6,4 +8,18 @@ const db = mysql.createPool({
     database: config.DATABASE_DB,
 });
 
-module.exports = db;
+
+const dbQuery = (query) => {
+    return new Promise((resolve, reject) => {
+        db.query(query, (err, res) => {
+            if(err){
+                reject(err);
+            }
+            resolve(res);
+        });
+    });
+};
+
+module.exports = {db, dbQuery};
+
+

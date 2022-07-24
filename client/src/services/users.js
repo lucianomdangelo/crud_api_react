@@ -1,17 +1,20 @@
 import Axios from 'axios';
+const { config } = require('../config');
 
-const getUsers = () => {
-    Axios.get()
+export const getUsers = () => {
+    Axios.get(`${config.API_URL}/users`).then( response => {
+        console.log(response);
+        return response;});
 };
 
-const getUser = () => {
+export const getUser = () => {
 
 };
 
-const createUser = () => {
+export const createUser = () => {
 
 };
 
-const deleteUser = () => {
+export const deleteUser = () => {
 
 };

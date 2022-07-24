@@ -3,7 +3,6 @@ const config = {
     DATABASE_USER: "root",
     DATABASE_PASSWORD: "",
     DATABASE_DB: "biografoImaginario",
-
 };
 
-module.exports = { config };
+module.exports = config;
