@@ -3,12 +3,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const config = require('./config'); 
-const { getUsers } = require('./db/users');
+const { getUsers } = require('./src/db/users');
 const { json } = require('body-parser');
+const path = require('path');
 
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 
 
@@ -22,8 +26,12 @@ app.get('/api/users', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
-    console.log('Server running on port 3001');
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+
+app.listen(config.PORT, () => {
+    console.log(`Server running on port ${config.PORT}`);
     console.log(`MySQL server URL: ${config.DATABASE_URL}`);
 
 });

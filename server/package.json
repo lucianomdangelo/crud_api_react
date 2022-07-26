@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "devStart": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.bundle.js",
+    "build": "webpack",
+    "dev": "nodemon ./server.js"
   },
   "author": "lucianomdangelo@gmail.com",
   "license": "ISC",
@@ -14,7 +14,16 @@
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.19"
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "del": "^7.0.0",
+    "fancy-log": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0",
+    "nodemon": "^2.0.19",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-stream": "^7.0.0"
   }
 }
