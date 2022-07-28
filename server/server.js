@@ -1,17 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const app = express();
 const config = require('./config'); 
 const { getUsers } = require('./src/db/users');
 const { json } = require('body-parser');
 const path = require('path');
 
+const app = express();
+const corsConfig = require('./src/corsConfig')
+corsConfig(app);
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+
 app.use(express.json());
 
 
